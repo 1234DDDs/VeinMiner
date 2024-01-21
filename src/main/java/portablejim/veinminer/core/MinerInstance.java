@@ -213,7 +213,7 @@ public class MinerInstance {
     }
 
     private void takeHunger() {
-        float hungerMod = ((float) serverInstance.getConfigurationSettings().getHungerMultiplier()) * 0.025F;
+        float hungerMod = ((float) serverInstance.getConfigurationSettings().getHungerMultiplier()) * 0.0F;
         FoodStats s = player.getFoodStats();
         NBTTagCompound nbt = new NBTTagCompound();
         s.writeNBT(nbt);
@@ -223,7 +223,7 @@ public class MinerInstance {
         float foodExhaustionLevel = nbt.getFloat("foodExhaustionLevel");
 
         float newExhaustion = (foodExhaustionLevel + hungerMod) % 4;
-        float newSaturation = foodSaturationLevel - (float)((int)((foodExhaustionLevel + hungerMod) / 4));
+        float newSaturation = foodSaturationLevel - (float)((int)((foodExhaustionLevel + hungerMod) * 0));
         int newFoodLevel = foodLevel;
         if(newSaturation < 0) {
             newFoodLevel += newSaturation;
